@@ -1,0 +1,105 @@
+@font-face{
+  font-family: 'mikado';
+  src: url("../fonts/hvd_fonts_-_mikadomedium-webfont.eot");
+  src: url("../fonts/hvd_fonts_-_mikadomedium-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/hvd_fonts_-_mikadomedium-webfont.woff2") format("woff2"), url("../fonts/hvd_fonts_-_mikadomedium-webfont.woff") format("woff"), url("../fonts/hvd_fonts_-_mikadomedium-webfont.ttf") format("truetype"), url("../fonts/hvd_fonts_-_mikadomedium-webfont.svg#mikadomedium") format("svg");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'mikado';
+  src: url("../fonts/hvd_fonts_-_mikadobold-webfont.eot");
+  src: url("../fonts/hvd_fonts_-_mikadobold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/hvd_fonts_-_mikadobold-webfont.woff2") format("woff2"), url("../fonts/hvd_fonts_-_mikadobold-webfont.woff") format("woff"), url("../fonts/hvd_fonts_-_mikadobold-webfont.ttf") format("truetype"), url("../fonts/hvd_fonts_-_mikadobold-webfont.svg#mikadobold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+*{
+  color: #333;
+}
+h1, h2, h3, h4, h5, h6{
+  font-family: 'mikado';
+  text-align: center;
+  color: #444;
+}
+h1{
+  font-weight: bold;
+  color: #B8293D;
+}
+h4{
+  font-weight: 300;
+  margin-top: 0px;
+  line-height: 5px;
+  color: #818181;
+}
+h6{
+  color: #515151;
+}
+.red{
+  background-color: #B8293D;
+  height: 100%;
+}
+.grey{
+  background-color: #F5F5F5;
+  height: 100%;
+}
+.clear{
+  height: 100%;
+}
+.desctiption{
+  color: #515151;
+  text-align: center;
+  padding: 20px 50px 0 50px;
+}
+.btn{
+  background-color: #000;
+  display: block;
+  width: 180px;
+  float: left;
+  padding: 10px 0;
+  margin: 0 10px;
+  border-radius: 3px;
+}
+.btn img{
+  width: 80%;
+  min-height: 30px;
+}
+.download{
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.signiture{
+  margin-top: 60px;
+  width: 160px;
+  float: right;
+  margin-right: 50px;
+}
+.signiture p{
+  font-size: 12px;
+  color: #999;
+}
+.body-wrap{
+  padding-top: 20px;
+}
+.container{
+  padding-top: 100px;
+  padding-bottom: 50px;
+  overflow: auto;
+  border-radius: 0 0 3px 3px;
+}
+table.footer-wrap, table.header-wrap{
+  width: 100%;
+  margin-top: 30px;
+}
+.footer{
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  color: #999;
+}
+.header{
+  width: 600px;
+  margin: 0 auto;
+}
+.footer p{
+  font-size: 12px;
+}

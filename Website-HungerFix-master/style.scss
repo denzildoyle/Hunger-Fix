@@ -1,0 +1,139 @@
+@font-face {
+    font-family: 'mikado';
+    src: url('../fonts/hvd_fonts_-_mikadomedium-webfont.eot');
+    src: url('../fonts/hvd_fonts_-_mikadomedium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/hvd_fonts_-_mikadomedium-webfont.woff2') format('woff2'),
+         url('../fonts/hvd_fonts_-_mikadomedium-webfont.woff') format('woff'),
+         url('../fonts/hvd_fonts_-_mikadomedium-webfont.ttf') format('truetype'),
+         url('../fonts/hvd_fonts_-_mikadomedium-webfont.svg#mikadomedium') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'mikado';
+    src: url('../fonts/hvd_fonts_-_mikadobold-webfont.eot');
+    src: url('../fonts/hvd_fonts_-_mikadobold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/hvd_fonts_-_mikadobold-webfont.woff2') format('woff2'),
+         url('../fonts/hvd_fonts_-_mikadobold-webfont.woff') format('woff'),
+         url('../fonts/hvd_fonts_-_mikadobold-webfont.ttf') format('truetype'),
+         url('../fonts/hvd_fonts_-_mikadobold-webfont.svg#mikadobold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+html,body{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+h1,h2,h3,h4,h5,h6{
+    text-align: center;
+    color: #444;
+}
+h1{
+	font-family: 'mikado';
+	font-weight: bold;
+	color: #B8293D;
+}
+h4{
+	font-family: 'mikado';
+	font-weight: 300;
+	margin-top: 0px;
+	color: #818181;
+}
+h6{
+    color: #515151;
+}
+
+.red{
+	background-color: #B8293D;
+	height: 100%;
+}
+.grey{
+	background-color: #F5F5F5;
+	height: 100%;
+}
+.clear{
+	height: 100%;
+}
+.container-fluid{
+	height: 100%;
+	padding: 0;
+}
+.phone{
+	width: 250px;
+	height: 507px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -125px;
+	margin-top: -254px;
+}
+.mascut{
+	width: 200px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 30%;
+}
+.desctiption{
+	color: #515151;
+	text-align: center;
+}
+.btn{
+	background-color: #000;
+	display: block;
+	padding: 8px 0;
+	img{
+		width: 80%;
+	}
+}
+.download{
+    margin-top: 30px;
+}
+.form-control{
+    height: 40px;
+}
+.btn-default{
+    padding: 10px 30px;
+    border: none;
+    border-radius: 3px;
+    background-color: #B8293D;
+    color: #fff;
+
+    &:hover{
+        background-color: #B8293D;
+        color: #fff;
+    }
+}
+.form-inline{
+    margin-top: 30px;
+}
+.center {
+    text-align:center;
+    & form{
+        display:inline-block;
+    }
+}
+
+@media (max-width: 990px){
+	.phone{
+		margin-top: -200px
+	}
+	.container-fluid{
+		height: 80%;
+		padding: 0;
+	}
+	.mascut{
+		display: none;
+	}
+	.info{
+		margin-top: 150px;
+	}
+    h6{
+        font-size: 14px;
+        color: #444;
+    }
+    .btn-default{
+        width:100%;
+    }
+}

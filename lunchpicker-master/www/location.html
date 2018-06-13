@@ -1,0 +1,70 @@
+<ion-view title="Location">
+	<div class="in-active" id="popup-bg">
+		<div class="in-active" id="popup">
+			<a class="close" ng-click="close()">x</a>
+			<p>Looks like we're going to <b>{{result.name}}</b> today.</p>
+			<a class="buttom-btn" ng-click="openMap(result.location.lat, result.location.lng)">Get Directions</a>
+		</div>
+	</div>
+	<ion-content>
+		<div class="header">
+			<img ng-src="img/monster-avatar.png" alt="">
+			<div class="copy">
+				<h3>Feed Me!</h3>
+				<p>What shall we eat...</p>
+			</div>
+		</div>
+
+		<div class="container">
+			<!-- how far -->
+			<h4>How far to look?</h4>
+			<div class="row">
+  				<div class="col">
+					<div class="radio-button">
+					   	<label>
+					    	<input type="radio" ng-model="distance.meters" ng-change="update()" value="500" /><span></span>
+						</label>
+					</div>
+					<div class="radio-button">
+					   	<label>
+					    	<input type="radio" ng-model="distance.meters" ng-change="update()" value="1000" /><span></span>
+						</label>
+					</div>
+					<div class="radio-button">
+					   	<label>
+					    	<input type="radio" ng-model="distance.meters" ng-change="update()" value="2000" /><span></span>
+						</label>
+					</div>
+		  		</div>
+
+				<div class="col col-85">
+					<div class="description">
+						<p>I'm hungry... feed me NOW!</p>
+						<p class="small">Walking distance (500 meters)</p>
+					</div>
+					<div class="description">
+						<p>15 minutes to spare</p>
+						<p class="small">Have wheels... will travel (1000 meters)</p>
+					</div>
+					<div class="description">
+						<p>The beast can wait</p>
+						<p class="small">Better be worth the wait (2000 meters)</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- options -->
+			<div class="check-button" ng-repeat="location in locations" ng-class="{'checked': location.isChecked, 'unchecked': !location.isChecked}">
+			   	<label>
+					<input type="checkbox" value="{{location.id}}" ng-checked="isSelected(location.id)" ng-click="toggleSelection(location.id)" /><span>{{location.name}}</span>
+				</label>
+			</div>
+
+			<div class="container-button">
+				<a ng-click="show()" class="btn" type="submit">- shake -</a>
+				<!-- <p>Shake your phone to feed the beast</p> -->
+			</div>
+
+
+  	</ion-content>
+</ion-view>

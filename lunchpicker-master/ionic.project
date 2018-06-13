@@ -1,0 +1,12 @@
+{
+  "name": "lunchpicker",
+  "app_id": "444ecb74",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}

@@ -1,0 +1,341 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+*{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Montserrat', sans-serif;
+	color: #fff194;
+}
+h6{
+	font-style: italic;
+}
+p{
+	color: #fff;
+}
+
+.pane, .view{
+	background-color: #e7334c;
+}
+
+.bg{
+	background: url(../img/background.png) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+
+	.img-title{
+		margin: 0 auto;
+		margin-top: 50px;
+		width: 80%;
+		display: block;
+	}
+	.img-main{
+		margin: 50px auto;
+		width: 60%;
+		display: block;
+	}
+	h1,h2,h3,h4,h5,h6,p{
+		text-align: center;
+	}
+	.container{
+		position: absolute;
+		bottom: 0;
+		padding: 0 20px;
+		width: 100%;
+	}
+}
+
+.header{
+	background-color: rgba(0,0,0,.4);
+	height: 90px;
+	padding: 10px 20px;
+
+	h3{
+		text-transform: uppercase;
+		margin: 12px 0 0 0;
+		font-weight: 900;
+		text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+	}
+	img{
+		float: left;
+		height: 100%;
+	}
+	.copy{
+		float: right;
+		width: 60%;
+	}
+}
+
+.container{
+	padding: 20px;
+}
+
+.check-button {
+    margin: 2px;
+    background-color: #fff194;
+    border-radius: 20px;
+    overflow: hidden;
+	display: inline-block;
+	color: #DF283C;
+}
+
+.check-button label {
+	display: inline-block;
+}
+
+.check-button label span {
+    text-align: center;
+    padding: 5px 12px;
+    display: block;
+    font-size: 12px;
+}
+
+.check-button label input {
+	display: none;
+}
+
+.check-button input + span::after{
+	font-family: "Ionicons";
+	margin-left: 10px;
+	content: '\f2c7';
+}
+
+.check-button input:checked + span {
+    background-color: #2B3142;
+    color: #fff;
+}
+
+.check-button input:checked + span::after{
+	font-family: "Ionicons";
+	margin-left: 10px;
+	content: '\f121';
+}
+
+///
+.radio-button {
+    background-color: #fff194;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+	display: block;
+	color: #DF283C;
+	margin: 0 0 25px 0;
+}
+
+.radio-button label span {
+    text-align: center;
+    display: block;
+    overflow: auto;
+    height: 30px;
+    font-size: 12px;
+    position: relative;
+}
+
+.radio-button label input {
+	display: none;
+}
+
+.radio-button input + span::after{
+	font-family: "Ionicons";
+	content: '\f2c7';
+	position: absolute;
+	top: 7px;
+	left: 11px;
+}
+
+.radio-button input:checked + span {
+    background-color: #2B3142;
+    color: #fff;
+
+}
+
+.radio-button input:checked + span::after{
+	font-family: "Ionicons";
+	content: '\f121';
+	font-weight: 900;
+	position: absolute;
+	top: 6px;
+	left: 10px;
+}
+.description{
+	margin-top: 20px;
+	p{
+		margin: -5px 0 0 0;
+		font-size: 14px;
+	}
+	.small{
+		margin: 0;
+		font-size: 10px;
+		font-style: italic;
+	}
+}
+
+.description:first-child{
+	margin-top:0;
+}
+
+.btn{
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: #384053;
+	width: 100%;
+	padding: 15px 0;
+	border-radius: 5px;
+	border: none;
+	font-weight: 700;
+	border-bottom: 3px solid #131722;
+	display: block;
+	text-align: center;
+}
+
+.container-button{
+	margin-top: 20px;
+	p{
+		color: #fff;
+		text-align: center;
+		margin-top: 10px;
+		font-size: 12px;
+	}
+}
+
+h4{
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(254, 241, 175, .5);
+}
+
+.in-active{
+	visibility: hidden;
+}
+
+.col-85{
+	-webkit-box-flex: 0;
+	-webkit-flex: 0 0 85%;
+	-moz-box-flex: 0;
+	-moz-flex: 0 0 85%;
+	-ms-flex: 0 0 85%;
+	flex: 0 0 85%;
+	max-width: 85%;
+}
+.popup-container .popup{
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 5px;
+
+	.popup-head{
+		border: none;
+		color: #444;
+	}
+	.popup-title{
+		font-weight: 800;
+		color: #000;
+	}
+	.popup-body{
+	  color: #333;
+	  text-align: center;
+	}
+	.button.button-positive {
+	  border: none;
+	  border-bottom: 3px solid #000;
+	  border-radius: 3px;
+	  background-color: #222;
+	  color: #fff;
+	  font-weight: 500;
+	}
+}
+
+.popup-bg{
+	visibility: visible;
+	-webkit-animation-duration: .5s;
+    -moz-animation-duration: .5s;
+    animation-duration: .5s;
+	width: 100%;
+	height: 100vh;
+	position:absolute;
+	top: 0;
+	bottom: 0;
+	z-index: 1;
+	background-color: rgba(0,0,0,0.8);
+}
+
+.popup-message{
+	visibility: visible;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+	background-color: #fff;
+	border-radius: 5px;
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+	margin-top: 100px;
+	max-height: 150px;
+	min-height: 100px;
+	position: absolute;
+	top: 50%;
+	margin-top: -75px;
+	left: 50%;
+	margin-left: -40%;
+
+	p{
+		padding: 30px 30px 80px 30px;
+		color: #444;
+		text-align: center;
+	}
+	b{
+		color: #333;
+	}
+
+	.buttom-btn{
+		position: absolute;
+		left: 0;
+		bottom: -1px;
+		padding: 15px 0;
+		border-radius: 0 0 5px 5px;
+		color: #fff;
+		text-align: center;
+		background-color: #e7334c;
+		width: 100%;
+		cursor: pointer;
+	}
+	img{
+		margin: -15%;
+		width: 30%;
+	}
+	.close{
+		position: absolute;
+		font-size: 20px;
+		color: #666;
+		top: 5px;
+		right: 10px;
+		font-size: 400;
+	}
+}
