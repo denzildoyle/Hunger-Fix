@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "lunchpicker: An Ionic project",
   "dependencies": {
+    "cordova-android": "6.3.0",
     "gulp": "^4.0.0",
     "gulp-concat": "^2.2.0",
     "gulp-minify-css": "^0.3.0",
@@ -25,5 +26,10 @@
   "cordovaPlatforms": [
     "ios",
     "android"
-  ]
+  ],
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  }
 }

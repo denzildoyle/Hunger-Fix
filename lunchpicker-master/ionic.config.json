@@ -1,6 +1,8 @@
 {
   "name": "lunchpicker",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "gulpStartupTasks": [
     "sass",
     "watch"
