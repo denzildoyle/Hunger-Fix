@@ -2,6 +2,8 @@ angular.module('starter.controllers', [])
 
 .controller('LocationCtrl', function($window, $scope, $ionicLoading, $ionicPopup, $state, $cordovaGeolocation, Locations) {
 
+  $scope.shake = false;
+
   $ionicLoading.show({
     template: 'loading locations...'
   });
@@ -114,6 +116,7 @@ angular.module('starter.controllers', [])
   
   if (typeof shake !== 'undefined') {
       shake.startWatch(onShake, 80 /*, onError */);
+      $scope.shake = true;
   }
 
   // Stop watching for shake gestures
