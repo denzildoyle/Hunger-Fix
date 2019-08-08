@@ -1,8 +1,9 @@
 {
-  "name": "lunchpicker",
+  "name": "HungerFix",
   "integrations": {
     "cordova": {}
   },
+  "type": "angular",
   "gulpStartupTasks": [
     "sass",
     "watch"
@@ -11,5 +12,5 @@
     "www/**/*",
     "!www/lib/**/*"
   ],
-  "pro_id": "444ecb74"
+  "id": "444ecb74"
 }
