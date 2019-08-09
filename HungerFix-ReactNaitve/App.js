@@ -1,21 +1,36 @@
 import React, { Component } from 'react'
 import { FlatList, ActivityIndicator, Text, View, Button } from 'react-native';
+// import Geolocation from 'react-native-geolocation-service';
 
 export default class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { 
-      isLoading: true
+    this.state = {
+      locationSet: false,
+      isLoading: false
     }
   }
 
   componentDidMount() {
   }
 
-  getLocationByDistance(lat, lng, radius){
-    var backendUrl = 'https://api.foursquare.com/v2/venues/search';
-    var token = 'WQYRTF4NQJSA2TLXN3ULY4DKIAI05C3PR3L31LKNGCY5ZROF';
+  getLocationByDistance(){
+    this.setState({ isLoading: true });
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        this.fetchLocationData(position.coords.latitude, position.coords.longitude);
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    )
+  }
+
+  fetchLocationData(lat, lng) {
+    const backendUrl = 'https://api.foursquare.com/v2/venues/search';
+    const token = 'WQYRTF4NQJSA2TLXN3ULY4DKIAI05C3PR3L31LKNGCY5ZROF';
+    const radius = '500';
+
     fetch(backendUrl + '?ll=' + lat + ',' + lng + '&radius=' + radius + '&categoryId=4d4b7105d754a06374d81259' + '&oauth_token=' + token + '&v=' + '20150510')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -23,10 +38,10 @@ export default class App extends Component {
         this.setState({
           isLoading: false,
           dataSource: responseJson.response.venues,
+          locationSet: true
         }, function () {
           console.log(this.state.dataSource);
         });
-
       })
       .catch((error) => {
         console.error(error);
@@ -34,30 +49,25 @@ export default class App extends Component {
   }
 
   render() {
-    var lat = "10.6300253";
-    var lng = "-61.455232699999996";
-    var radius = "500";
-
     if (this.state.isLoading) {
-      return (
-        <View style={{ flex: 1, padding: 20 }}>
-          <ActivityIndicator />
-          <Button
-            onPress={this.getLocationByDistance(lat, lng, radius)}
-            title="Load Locations"
-            color="#841584"
-            accessibilityLabel="Learn more about this purple button"
-          />
-        </View>
-      )
+      var loadingAnimation = < ActivityIndicator />;
+    } 
+    if (this.state.locationSet) {
+      var locationsList = <FlatList
+                        data={this.state.dataSource}
+                        renderItem={({ item }) => <Text>{item.name}</Text>}
+                        keyExtractor={({ id }, index) => id}
+                      />;
     }
-
     return (
       <View style={{ flex: 1, paddingTop: 20 }}>
-        <FlatList
-          data={this.state.dataSource}
-          renderItem={({ item }) => <Text>{item.name}</Text>}
-          keyExtractor={({ id }, index) => id}
+        {loadingAnimation}
+        {locationsList}
+        <Button
+          onPress={() => this.getLocationByDistance()}
+          title="Load Locations"
+          color="#841584"
+          accessibilityLabel="Learn more about this purple button"
         />
       </View>
     );
