@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { FlatList, ActivityIndicator, Text, View, Button } from 'react-native';
+import { FlatList, ActivityIndicator, Text, View, StyleSheet, TouchableOpacity, Button} from 'react-native';
+import RNShake from 'react-native-shake';
+
+// faster on Android https://github.com/Agontuk/react-native-geolocation-service according to this article https://facebook.github.io/react-native/docs/geolocation
 // import Geolocation from 'react-native-geolocation-service';
 
 export default class App extends Component {
@@ -12,7 +15,17 @@ export default class App extends Component {
     }
   }
 
+  componentWillMount() {
+    RNShake.addEventListener('ShakeEvent', () => {
+      this.getLocationByDistance();
+    });
+  }
+
   componentDidMount() {
+  }
+
+  componentWillUnmount() {
+    RNShake.removeEventListener('ShakeEvent');
   }
 
   getLocationByDistance(){
@@ -34,13 +47,10 @@ export default class App extends Component {
     fetch(backendUrl + '?ll=' + lat + ',' + lng + '&radius=' + radius + '&categoryId=4d4b7105d754a06374d81259' + '&oauth_token=' + token + '&v=' + '20150510')
       .then((response) => response.json())
       .then((responseJson) => {
-
         this.setState({
           isLoading: false,
           dataSource: responseJson.response.venues,
           locationSet: true
-        }, function () {
-          console.log(this.state.dataSource);
         });
       })
       .catch((error) => {
@@ -51,14 +61,16 @@ export default class App extends Component {
   render() {
     if (this.state.isLoading) {
       var loadingAnimation = < ActivityIndicator />;
-    } 
+    }
+
     if (this.state.locationSet) {
       var locationsList = <FlatList
-                        data={this.state.dataSource}
-                        renderItem={({ item }) => <Text>{item.name}</Text>}
-                        keyExtractor={({ id }, index) => id}
-                      />;
+                            data={this.state.dataSource}
+                            renderItem={({ item }) => <Text>{item.name}</Text>}
+                            keyExtractor={({ id }, index) => id}
+                          />;
     }
+
     return (
       <View style={{ flex: 1, paddingTop: 20 }}>
         {loadingAnimation}
