@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, ActivityIndicator, Text, View, StyleSheet, TouchableOpacity, Button} from 'react-native';
+import { FlatList, ActivityIndicator, Text, View, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import RNShake from 'react-native-shake';
 
 // faster on Android https://github.com/Agontuk/react-native-geolocation-service according to this article https://facebook.github.io/react-native/docs/geolocation
@@ -28,7 +28,7 @@ export default class App extends Component {
     RNShake.removeEventListener('ShakeEvent');
   }
 
-  getLocationByDistance(){
+  getLocationByDistance() {
     this.setState({ isLoading: true });
     navigator.geolocation.getCurrentPosition(
       async (position) => {
@@ -65,10 +65,10 @@ export default class App extends Component {
 
     if (this.state.locationSet) {
       var locationsList = <FlatList
-                            data={this.state.dataSource}
-                            renderItem={({ item }) => <Text>{item.name}</Text>}
-                            keyExtractor={({ id }, index) => id}
-                          />;
+        data={this.state.dataSource}
+        renderItem={({ item }) => <Text>{item.name}</Text>}
+        keyExtractor={({ id }, index) => id}
+      />;
     }
 
     return (
