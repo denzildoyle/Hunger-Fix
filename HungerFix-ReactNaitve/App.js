@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { View, Button } from 'react-native';
 
 export default class App extends Component {
 
@@ -15,7 +16,7 @@ export default class App extends Component {
 
   getLocationByDistance() {
   }
-
+  
   render() {
     return (
       <View style={{ flex: 1, paddingTop: 20 }}>
