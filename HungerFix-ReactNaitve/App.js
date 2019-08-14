@@ -1,16 +1,19 @@
-import { createAppContainer, createStackNavigator } from 'react-navigation'; 
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 import Locations from './components/Locations';
 import Home from './components/Home';
 
-const NavStack = createStackNavigator({
+const NavStack = createStackNavigator(
+{
 	Home: {
-		screen: Home
+		screen: Home,
 	},
 	Locations: {
-		screen: Locations
+		screen: Locations,
 	},
-},{
-    initialRouteName: 'Home'
+}, 
+{ 
+	initialRouteName: 'Home',
+	headerMode: 'none'
 });
 
 const App = createAppContainer(NavStack);

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { FlatList, ActivityIndicator, Text, View, Button } from 'react-native';
 import RNShake from 'react-native-shake';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 // faster on Android https://github.com/Agontuk/react-native-geolocation-service according to this article https://facebook.github.io/react-native/docs/geolocation
 // import Geolocation from 'react-native-geolocation-service';
 
 export default class Locations extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -80,6 +80,19 @@ export default class Locations extends Component {
                     title="Load Locations"
                     color="#841584"
                     accessibilityLabel="Learn more about this purple button"
+                />
+                <Button
+                    onPress={() => {
+                        this.props.navigation.dispatch(StackActions.reset({
+                            index: 0,
+                            actions: [
+                                NavigationActions.navigate({ routeName: 'Home' })
+                            ],
+                        }))
+                    }}
+                    title="Back"
+                    color="#841584"
+                    accessibilityLabel="Back"
                 />
             </View>
         );
