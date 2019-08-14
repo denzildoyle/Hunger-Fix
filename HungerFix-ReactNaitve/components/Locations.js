@@ -72,7 +72,8 @@ export default class Locations extends Component {
         }
 
         return (
-            <View style={{ flex: 1, paddingTop: 20 }}>
+            <View style={{ flex: 1, paddingTop: 30 }}>
+                <StatusBar barStyle="light-content" /> 
                 {loadingAnimation}
                 {locationsList}
                 <Button

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ImageBackground, StyleSheet, View, TouchableOpacity, Image, Text } from 'react-native';
+import { ImageBackground, StyleSheet, View, TouchableOpacity, Image, Text, StatusBar } from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
 
 export default class App extends Component {
@@ -7,6 +7,7 @@ export default class App extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <StatusBar barStyle="light-content" /> 
                 <ImageBackground source={require("../assets/images/background.png")} style={styles.backgroudImage}>
                     <View style={{ flex: 1}}>
                         <Image style={styles.fluidImg} source={require('../assets/images/logo-2-lunch-picker.png')} />
