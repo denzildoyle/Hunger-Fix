@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, ActivityIndicator, Text, View, StyleSheet, TouchableOpacity, Button } from 'react-native';
+import { FlatList, ActivityIndicator, Text, View, Button } from 'react-native';
 import RNShake from 'react-native-shake';
 
 // faster on Android https://github.com/Agontuk/react-native-geolocation-service according to this article https://facebook.github.io/react-native/docs/geolocation
