@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { FlatList, ActivityIndicator, Text, View, Button } from 'react-native';
+import { FlatList, ActivityIndicator, Text, View, Button, StatusBar } from 'react-native';
 import RNShake from 'react-native-shake';
 import { StackActions, NavigationActions } from 'react-navigation';
+import RadioButtons from '../components/RadioButtons';
 
 // faster on Android https://github.com/Agontuk/react-native-geolocation-service according to this article https://facebook.github.io/react-native/docs/geolocation
 // import Geolocation from 'react-native-geolocation-service';
@@ -14,6 +15,7 @@ export default class Locations extends Component {
             isLoading: false
         }
     }
+    
 
     componentWillMount() {
         RNShake.addEventListener('ShakeEvent', () => {
@@ -59,6 +61,25 @@ export default class Locations extends Component {
     }
 
     render() {
+
+        const options = [
+            {
+                key: 500,
+                primaryText: 'I\'m hungry...feed me NOW!',
+                secondaryText: 'Walking distance (500 meters)'
+            },
+            {
+                key: 1000,
+                primaryText: '15 minutes to spare',
+                secondaryText: 'Have wheels... willing to travel (1000 meters)'
+            },
+            {
+                key: 2000,
+                primaryText: 'The beast can wait',
+                secondaryText: 'Better be worth the wait (2000 meters)'
+            }
+        ];
+
         if (this.state.isLoading) {
             var loadingAnimation = < ActivityIndicator />;
         }
@@ -73,7 +94,10 @@ export default class Locations extends Component {
 
         return (
             <View style={{ flex: 1, paddingTop: 30 }}>
+
                 <StatusBar barStyle="light-content" /> 
+                <RadioButtons options={options} />
+
                 {loadingAnimation}
                 {locationsList}
                 <Button
