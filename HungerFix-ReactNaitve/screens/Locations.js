@@ -3,6 +3,7 @@ import { FlatList, ActivityIndicator, Text, View, Button, StatusBar, StyleSheet 
 import RNShake from 'react-native-shake';
 import { StackActions, NavigationActions } from 'react-navigation';
 import RadioButtons from '../components/RadioButtons';
+import mainStyles from '../styles'
 
 // faster on Android https://github.com/Agontuk/react-native-geolocation-service according to this article https://facebook.github.io/react-native/docs/geolocation
 // import Geolocation from 'react-native-geolocation-service';
@@ -93,7 +94,7 @@ export default class Locations extends Component {
         }
 
         return (
-            <View style={{ flex: 1, paddingTop: 30 }}>
+            <View style={mainStyles.container}>
 
                 <StatusBar barStyle="light-content" /> 
                 <RadioButtons

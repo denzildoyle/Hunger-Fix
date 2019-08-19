@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { ImageBackground, StyleSheet, View, TouchableOpacity, Image, Text, StatusBar } from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
+import mainStyles from '../styles'
 
 export default class App extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={mainStyles.container}>
                 <StatusBar barStyle="light-content" /> 
                 <ImageBackground source={require("../assets/images/background.png")} style={styles.backgroudImage}>
                     <View style={{ flex: 1}}>
@@ -39,13 +40,6 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'stretch',
-        backgroundColor: '#D1384F',
-        paddingTop: 30
-    },
     backgroudImage: {
         flex: 1,
         paddingRight: 15, 
