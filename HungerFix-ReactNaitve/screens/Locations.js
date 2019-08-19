@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, ActivityIndicator, Text, View, Button, StatusBar } from 'react-native';
+import { FlatList, ActivityIndicator, Text, View, Button, StatusBar, StyleSheet } from 'react-native';
 import RNShake from 'react-native-shake';
 import { StackActions, NavigationActions } from 'react-navigation';
 import RadioButtons from '../components/RadioButtons';
@@ -12,11 +12,11 @@ export default class Locations extends Component {
         super(props);
         this.state = {
             locationSet: false,
-            isLoading: false
+            isLoading: false,
+            key: 500
         }
     }
     
-
     componentWillMount() {
         RNShake.addEventListener('ShakeEvent', () => {
             this.getLocationByDistance();
@@ -44,7 +44,7 @@ export default class Locations extends Component {
     fetchLocationData(lat, lng) {
         const backendUrl = 'https://api.foursquare.com/v2/venues/search';
         const token = 'WQYRTF4NQJSA2TLXN3ULY4DKIAI05C3PR3L31LKNGCY5ZROF';
-        const radius = '500';
+        const radius = this.state.key;
 
         fetch(backendUrl + '?ll=' + lat + ',' + lng + '&radius=' + radius + '&categoryId=4d4b7105d754a06374d81259' + '&oauth_token=' + token + '&v=' + '20150510')
             .then((response) => response.json())
@@ -96,10 +96,15 @@ export default class Locations extends Component {
             <View style={{ flex: 1, paddingTop: 30 }}>
 
                 <StatusBar barStyle="light-content" /> 
-                <RadioButtons options={options} />
-
+                <RadioButtons
+                    options={options}
+                    value={this.state.key}
+                    onChange={key => this.setState({ key })}
+                />
+                
                 {loadingAnimation}
                 {locationsList}
+            
                 <Button
                     onPress={() => this.getLocationByDistance()}
                     title="Load Locations"
@@ -123,3 +128,11 @@ export default class Locations extends Component {
         );
     }
 }
+
+
+const styles = StyleSheet.create({
+    text: {
+        color: '#000000',
+        fontSize: 20
+    }
+});

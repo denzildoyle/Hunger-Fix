@@ -12,6 +12,7 @@ export default class App extends Component {
                     <View style={{ flex: 1}}>
                         <Image style={styles.fluidImg} source={require('../assets/images/logo-2-lunch-picker.png')} />
                     </View>
+                    
                     <View>
                         <Text style={[styles.text, styles.yellowText]}>Only use this app if you really can't decide what you want to eat for lunch! We are not responsible for any lunch monsters left unfed.</Text>
 
@@ -25,9 +26,7 @@ export default class App extends Component {
                                 }))
                             }}>
                             <View style={styles.button}>
-                                <Text style={styles.buttonText}>
-                                    I've got the munchies
-                                </Text>
+                                <Text style={styles.buttonText}>I've got the munchies</Text>
                             </View>
                         </TouchableOpacity>
 
