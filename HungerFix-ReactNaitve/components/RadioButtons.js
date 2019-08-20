@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import mainStyles from '../styles';
 
 export default class RadioButtons extends Component {
     render() {
@@ -14,12 +15,15 @@ export default class RadioButtons extends Component {
                                 onPress={() => {
                                     onChange(item.key);
                                 }}>
-
-                                {value === item.key && <View style={styles.checkedCircle} />}
-                                {value != item.key && <View style={styles.circle} />}
-
-                                <Text>{item.primaryText}</Text>
-                                <Text>{item.secondaryText}</Text>
+                                
+                                <View>
+                                    {value === item.key && <View style={styles.checkedCircle} />}
+                                    {value != item.key && <View style={styles.circle} />}
+                                </View>
+                                <View>
+                                    <Text style={styles.primaryText}>{item.primaryText}</Text>
+                                    <Text style={styles.secondaryText}>{item.secondaryText}</Text>
+                                </View>
                             </TouchableOpacity>
                         </View>
                     );
@@ -42,19 +46,28 @@ const styles = StyleSheet.create({
         width: 20,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#ACACAC',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '#333333',
     },
 
     checkedCircle: {
         width: 20,
         height: 20,
         borderRadius: 10,
-        borderWidth: 1,
-        borderColor: '#ACACAC',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#794F9B',
+        backgroundColor: '#FFF194',
     },
+    primaryText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 20
+    },
+    secondaryText:{
+        color: '#fff',
+        fontWeight: '400',
+        fontSize: 14,
+        lineHeight: 21
+    }
 });

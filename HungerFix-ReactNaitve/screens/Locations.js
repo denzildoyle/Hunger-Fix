@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { FlatList, ActivityIndicator, Text, View, Button, StatusBar, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { FlatList, ActivityIndicator, Text, View, TouchableOpacity, StatusBar, StyleSheet } from 'react-native';
 import RNShake from 'react-native-shake';
 import { StackActions, NavigationActions } from 'react-navigation';
 import RadioButtons from '../components/RadioButtons';
-import mainStyles from '../styles'
+import mainStyles from '../styles';
 
 // faster on Android https://github.com/Agontuk/react-native-geolocation-service according to this article https://facebook.github.io/react-native/docs/geolocation
 // import Geolocation from 'react-native-geolocation-service';
@@ -55,6 +55,8 @@ export default class Locations extends Component {
                     dataSource: responseJson.response.venues,
                     locationSet: true
                 });
+
+                console.log(responseJson.response.venues);
             })
             .catch((error) => {
                 console.error(error);
@@ -88,7 +90,7 @@ export default class Locations extends Component {
         if (this.state.locationSet) {
             var locationsList = <FlatList
                 data={this.state.dataSource}
-                renderItem={({ item }) => <Text>{item.name}</Text>}
+                renderItem={({ item }) => <Text style={mainStyles.text}>{item.name}</Text>}
                 keyExtractor={({ id }, index) => id}
             />;
         }
@@ -106,13 +108,15 @@ export default class Locations extends Component {
                 {loadingAnimation}
                 {locationsList}
             
-                <Button
-                    onPress={() => this.getLocationByDistance()}
-                    title="Load Locations"
-                    color="#841584"
-                    accessibilityLabel="Learn more about this purple button"
-                />
-                <Button
+                <TouchableOpacity onPress={() => this.getLocationByDistance()} >
+                    <View style={mainStyles.button}>
+                        <Text style={mainStyles.buttonText}>Show Random Location</Text>
+                    </View>
+                </TouchableOpacity>
+                
+                <Text style={[mainStyles.text, mainStyles.smallText]}>Shake device to randomly select a location above.</Text>
+
+                <TouchableOpacity
                     onPress={() => {
                         this.props.navigation.dispatch(StackActions.reset({
                             index: 0,
@@ -121,19 +125,10 @@ export default class Locations extends Component {
                             ],
                         }))
                     }}
-                    title="Back"
-                    color="#841584"
-                    accessibilityLabel="Back"
-                />
+                >
+                    <Text style={[mainStyles.text, mainStyles.smallText]}>Back</Text>
+                </TouchableOpacity>
             </View>
         );
     }
 }
-
-
-const styles = StyleSheet.create({
-    text: {
-        color: '#000000',
-        fontSize: 20
-    }
-});
