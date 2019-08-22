@@ -1,14 +1,18 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation';
-import Locations from './screens/Locations';
-import Home from './screens/Home';
+import LocationScreen from './screens/Locations';
+import HomeScreen from './screens/Home';
+import MapScreen from './screens/Map';
 
 const NavStack = createStackNavigator(
 {
 	Home: {
-		screen: Home,
+		screen: HomeScreen,
+	},
+	Map: {
+		screen: MapScreen,
 	},
 	Locations: {
-		screen: Locations,
+		screen: LocationScreen,
 	},
 }, 
 { 

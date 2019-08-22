@@ -31,6 +31,21 @@ export default class App extends Component {
                             </View>
                         </TouchableOpacity>
 
+
+                        <TouchableOpacity
+                            onPress={() => {
+                                this.props.navigation.dispatch(StackActions.reset({
+                                    index: 0,
+                                    actions: [
+                                        NavigationActions.navigate({ routeName: 'Map' })
+                                    ],
+                                }))
+                            }}>
+                            <View style={mainStyles.button}>
+                                <Text style={mainStyles.buttonText}>Map</Text>
+                            </View>
+                        </TouchableOpacity>
+
                         <Text style={[mainStyles.text, mainStyles.smallText]}>Choose your food options on the next screen.</Text>
                     </View>
                 </ImageBackground>
