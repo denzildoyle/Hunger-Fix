@@ -4,9 +4,13 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        alignItems: 'stretch',
+        // alignItems: 'stretch',
         backgroundColor: '#D1384F',
-        paddingTop: 30
+        paddingTop: 30,
+    },
+    content:{
+        paddingRight: 15,
+        paddingLeft: 15
     },
     text: {
         color: '#fff',

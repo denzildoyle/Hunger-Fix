@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, ActivityIndicator, Text, View, TouchableOpacity, StatusBar, StyleSheet } from 'react-native';
+import { FlatList, ActivityIndicator, Text, View, ScrollView, TouchableOpacity, StatusBar, StyleSheet } from 'react-native';
 import RNShake from 'react-native-shake';
 import { StackActions, NavigationActions } from 'react-navigation';
 import RadioButtons from '../components/RadioButtons';
@@ -55,7 +55,9 @@ export default class Locations extends Component {
                     dataSource: responseJson.response.venues,
                     locationSet: true
                 });
-
+                console.log(responseJson);
+                console.log('lat:' + lat);
+                console.log('lng:' + lng);
                 console.log(responseJson.response.venues);
             })
             .catch((error) => {
@@ -84,19 +86,19 @@ export default class Locations extends Component {
         ];
 
         if (this.state.isLoading) {
-            var loadingAnimation = < ActivityIndicator />;
+            var loadingAnimation = < ActivityIndicator size="large" color="#FFFFFF"/>;
         }
 
         if (this.state.locationSet) {
-            var locationsList = <FlatList
-                data={this.state.dataSource}
-                renderItem={({ item }) => <Text style={mainStyles.text}>{item.name}</Text>}
-                keyExtractor={({ id }, index) => id}
-            />;
+            var locationsList = <Text>{this.state.dataSource.map((location) => {
+                                    return (
+                                        <Text key={location.id} style={styles.locations}>{location.name}</Text>
+                                    )
+                                })}</Text>
         }
 
         return (
-            <View style={mainStyles.container}>
+            <ScrollView style={[mainStyles.container, mainStyles.content]}>
 
                 <StatusBar barStyle="light-content" /> 
                 <RadioButtons
@@ -128,7 +130,19 @@ export default class Locations extends Component {
                 >
                     <Text style={[mainStyles.text, mainStyles.smallText]}>Back</Text>
                 </TouchableOpacity>
-            </View>
+            </ScrollView>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    locations: {
+        backgroundColor: '#FFF194',
+        padding: 10,
+        color: '#D1384F',
+        margin: 10,
+        borderRadius: 100,
+        flexDirection: 'row', 
+        flexWrap: 'wrap'
+    }
+});

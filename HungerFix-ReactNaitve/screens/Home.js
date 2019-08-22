@@ -9,7 +9,7 @@ export default class App extends Component {
         return (
             <View style={mainStyles.container}>
                 <StatusBar barStyle="light-content" /> 
-                <ImageBackground source={require("../assets/images/background.png")} style={styles.backgroudImage}>
+                <ImageBackground source={require("../assets/images/background.png")} style={[styles.backgroudImage, mainStyles.content]}>
                     <View style={{ flex: 1}}>
                         <Image style={styles.fluidImg} source={require('../assets/images/logo-2-lunch-picker.png')} />
                     </View>
@@ -41,9 +41,7 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
     backgroudImage: {
-        flex: 1,
-        paddingRight: 15, 
-        paddingLeft: 15
+        flex: 1
     },
     fluidImg: {
         width: '100%',
