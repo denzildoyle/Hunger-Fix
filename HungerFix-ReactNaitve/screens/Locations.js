@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { FlatList, ActivityIndicator, Text, View, ScrollView, TouchableOpacity, StatusBar, StyleSheet } from 'react-native';
+import { ActivityIndicator, Text, View, ScrollView, TouchableOpacity, StatusBar, StyleSheet } from 'react-native';
 import RNShake from 'react-native-shake';
 import { StackActions, NavigationActions } from 'react-navigation';
 import RadioButtons from '../components/RadioButtons';
+import Item from '../components/Items';
 import mainStyles from '../styles';
 
 // faster on Android https://github.com/Agontuk/react-native-geolocation-service according to this article https://facebook.github.io/react-native/docs/geolocation
@@ -14,9 +15,21 @@ export default class Locations extends Component {
         this.state = {
             locationSet: false,
             isLoading: false,
-            key: 500
+            key: 500,
+            selectedItem: [],
         }
     }
+
+    toggleItem = item => {
+        // If item is in state, then remove it, if not add it
+        if (this.state.selectedItem.includes(item)) {
+            this.setState(({ selectedItem }) => ({
+                selectedItem: selectedItem.filter(a => a !== item),
+            }));
+        } else {
+            this.setState(({ selectedItem }) => ({ selectedItem: [...selectedItem, item] }));
+        }
+    };
     
     componentWillMount() {
         RNShake.addEventListener('ShakeEvent', () => {
@@ -90,11 +103,16 @@ export default class Locations extends Component {
         }
 
         if (this.state.locationSet) {
-            var locationsList = <Text>{this.state.dataSource.map((location) => {
-                                    return (
-                                        <Text key={location.id} style={styles.locations}>{location.name}</Text>
-                                    )
-                                })}</Text>
+            var locationsList = <View style={styles.list}>
+                                    {this.state.dataSource.map(location => (
+                                        <Item
+                                            title={location.name}
+                                            key={location.id}
+                                            selectedItem={this.state.selectedItem.includes(location)}
+                                            onChange={() => this.toggleItem(location)}
+                                        />
+                                    ))}
+                                </View>
         }
 
         return (
@@ -144,5 +162,9 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         flexDirection: 'row', 
         flexWrap: 'wrap'
+    },
+    list: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     }
 });
