@@ -1,4 +1,4 @@
-# HungerFix  
+# Hunger Fix  
 
 ![alt text](https://raw.githubusercontent.com/denzildoyle/Hunger-Fix/master/hungerfix-screenshots.PNG "HungerFix Screenshot")
 
